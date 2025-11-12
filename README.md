@@ -157,5 +157,3 @@ Demonstrates UI adaptability for dark/light modes.
 * [Vite Documentation](https://vitejs.dev/)
 
 ---
-
-📘 *End of Document*
