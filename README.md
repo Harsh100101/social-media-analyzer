@@ -1,32 +1,34 @@
-## SOCIAL MEDIA VIDEO ANALYZER - PROJECT DOCUMENTATION
+# 📄 PDF & SOCIAL MEDIA VIDEO ANALYZER - PROJECT DOCUMENTATION
 
 ---
 
 ### **1. Project Overview**
 
-The **Social Media Video Analyzer** is an AI-powered web application designed to help creators and marketers analyze their social media content—both **text and videos**—to improve engagement and content quality. It uses **AssemblyAI** for video transcription and performs linguistic and engagement-based analysis using custom algorithms.
+The **Social Media Video & PDF Analyzer** is an AI-powered web application designed to help creators, marketers, and professionals analyze their **social media content and PDF documents** for engagement, readability, and optimization insights. It supports text, video, and PDF uploads — analyzing each to provide data-driven suggestions for improving content quality.
 
 ---
 
 ### **2. Features**
 
-* **Text & Video Upload:** Users can upload written posts or video clips for analysis.
-* **AI-Powered Analysis:** Automatically identifies tone, hashtags, mentions, CTAs, and engagement potential.
-* **Video Transcription:** Extracts spoken text from video using AssemblyAI API.
-* **Smart Suggestions:** Provides insights like keyword optimization, question detection, and tone improvements.
-* **Dark/Light Mode:** Seamless toggle between modes for better user experience.
-* **Dynamic Progress Bar:** Displays upload and analysis progress in real-time.
+* **Text, Video & PDF Upload:** Supports uploading written posts, videos, and PDF files.
+* **AI-Powered Analysis:** Detects tone, hashtags, mentions, CTAs, keywords, and engagement potential.
+* **Video Transcription:** Extracts spoken content from videos using AssemblyAI.
+* **PDF Reader:** Extracts text from uploaded PDFs using `pdfjs-dist`.
+* **Smart Suggestions:** Provides optimization tips for better readability and engagement.
+* **Dark/Light Mode:** Seamless theme toggle for user comfort.
+* **Dynamic Progress Bar:** Displays upload and analysis progress visually.
 
 ---
 
 ### **3. Technology Stack**
 
-| Layer       | Technology Used             |
-| ----------- | --------------------------- |
-| Frontend    | React + Vite                |
-| Backend API | AssemblyAI (Speech-to-Text) |
-| Styling     | Custom CSS                  |
-| Deployment  | GitHub Pages / Vercel       |
+| Layer               | Technology Used          |
+| ------------------- | ------------------------ |
+| Frontend            | React + Vite             |
+| PDF Parsing         | pdfjs-dist               |
+| Video Transcription | AssemblyAI API           |
+| Styling             | Custom CSS (Theme-based) |
+| Deployment          | GitHub Pages / Vercel    |
 
 ---
 
@@ -53,7 +55,7 @@ Create a file named `.env` in the root directory and add your API key:
 VITE_ASSEMBLYAI_API_KEY="your_assemblyai_api_key_here"
 ```
 
-⚠️ *Note: Do not commit your .env file to GitHub. It’s already ignored by `.gitignore`.*
+⚠️ *Note: Do not commit your `.env` file to GitHub. It’s already ignored by `.gitignore`.*
 
 #### **Step 4: Run the App Locally**
 
@@ -69,27 +71,33 @@ Then open [http://localhost:5173](http://localhost:5173) in your browser.
 
 #### 🏠 **Home Page**
 
-Displays the upload options for both text and video.
+Displays the upload options for text, video, and PDF.
 
-<img width="1919" height="987" alt="image" src="https://github.com/user-attachments/assets/16d3f391-cb35-44ec-bd5d-7bf835690f5e" />
+<img width="1919" height="993" alt="Screenshot 2025-11-12 190247" src="https://github.com/user-attachments/assets/71e8fc4b-7afd-4389-9622-34376fce3667" />
 
 #### 📤 **Video Upload with Progress Bar**
 
-Visualizes upload and transcription progress in real-time.
+Shows real-time progress during upload and transcription.
 
-<img width="1024" height="498" alt="image" src="https://github.com/user-attachments/assets/e4bd5919-7c9b-4cdc-9301-4a0eab0e28c2" />
+<img width="1897" height="991" alt="image" src="https://github.com/user-attachments/assets/d0bae567-6238-4d93-80ad-85276a44b6ce" />
+
+#### 📄 **PDF Upload Interface**
+
+Extracts and displays text content from uploaded PDF files.
+
+<img width="1039" height="987" alt="image" src="https://github.com/user-attachments/assets/dd68a1b1-084c-4ecd-b435-bdf29835d3e4" />
 
 #### 📊 **Analysis Results Section**
 
 Shows extracted text and engagement improvement suggestions.
 
-<img width="1058" height="960" alt="image" src="https://github.com/user-attachments/assets/09e70039-06ab-4c6d-9e2a-bcd1cc3b0797" />
+<img width="906" height="850" alt="image" src="https://github.com/user-attachments/assets/562be1ac-a782-4565-961c-a4d77e6f1bc2" />
 
 #### 🌙 **Dark Mode Example**
 
-Demonstrates UI adaptability for dark/light modes.
+Demonstrates UI adaptability between light and dark themes.
 
-<img width="1910" height="987" alt="image" src="https://github.com/user-attachments/assets/38a3ee29-c32f-4e65-834c-9d56f7462430" />
+<img width="1911" height="987" alt="image" src="https://github.com/user-attachments/assets/d0d5d6eb-f3b8-451f-8d68-3dad35795904" />
 
 ---
 
@@ -97,7 +105,7 @@ Demonstrates UI adaptability for dark/light modes.
 
 #### 🚀 **Deploy on GitHub Pages**
 
-1. Install the GitHub Pages dependency:
+1. Install GitHub Pages dependency:
 
    ```bash
    npm install gh-pages --save-dev
@@ -119,9 +127,9 @@ Demonstrates UI adaptability for dark/light modes.
 
 #### 🌐 **Deploy on Vercel**
 
-1. Go to [https://vercel.com](https://vercel.com)
+1. Visit [https://vercel.com](https://vercel.com)
 2. Import your GitHub repository.
-3. Add your **VITE_ASSEMBLYAI_API_KEY** in *Environment Variables*.
+3. Add your `VITE_ASSEMBLYAI_API_KEY` under *Environment Variables*.
 4. Click **Deploy**.
 
 ---
@@ -129,8 +137,8 @@ Demonstrates UI adaptability for dark/light modes.
 ### **7. Security Notes**
 
 * Never commit `.env` or API keys publicly.
-* Ensure the key is used only on the client-side securely.
-* Validate video uploads for size before sending to AssemblyAI.
+* Validate file size before uploading to avoid large payloads.
+* Limit access to sensitive API credentials.
 
 ---
 
@@ -144,16 +152,20 @@ Demonstrates UI adaptability for dark/light modes.
 
 ### **9. Future Enhancements**
 
-* Add multilingual transcription support.
-* Include advanced NLP-based engagement scoring.
-* Integrate with YouTube or Instagram APIs for auto-import.
+* Add OCR support for image-based PDFs.
+* Introduce multilingual transcription and translation.
+* Improve NLP-based engagement analysis.
+* Add real-time analytics dashboard.
 
 ---
 
 ### **10. References**
 
 * [AssemblyAI API Documentation](https://www.assemblyai.com/docs/)
+* [PDF.js (pdfjs-dist) Docs](https://mozilla.github.io/pdf.js/)
 * [React Official Docs](https://react.dev/)
 * [Vite Documentation](https://vitejs.dev/)
 
 ---
+
+© 2025 Social Media Video & PDF Analyzer | Built with by Harsh
