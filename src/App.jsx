@@ -137,7 +137,7 @@ export default function App() {
 			const positive =
 				/(great|amazing|excited|love|happy|fun|awesome)/i.test(text);
 			const negative = /(bad|angry|sad|hate|issue|problem)/i.test(text);
-			if (positive) hints.push("Tone: Positive & engaging 👍");
+			if (positive) hints.push("Tone: Positive & engaging");
 			else if (negative)
 				hints.push(
 					"Tone: Cautious or negative — balance with positivity."

@@ -1,0 +1,31 @@
+.video-container {
+	max-width: 500px;
+	margin: 20px auto;
+	background: var(--card-bg);
+	border-radius: 12px;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+	padding: 20px;
+}
+
+.video-container video {
+	width: 100%;
+	max-height: 280px;
+	border-radius: 10px;
+	object-fit: cover;
+	box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+.video-container input[type="file"] {
+	margin-top: 10px;
+}
+.video-container button {
+	margin-top: 15px;
+	padding: 10px 15px;
+	background-color: var(--button-bg);
+	color: var(--button-text);
+	border: none;
+	border-radius: 6px;
+	cursor: pointer;
+}
+.video-container button:hover {
+	background-color: var(--button-bg-hover);
+}

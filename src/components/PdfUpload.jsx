@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 import * as pdfjsLib from "pdfjs-dist";
-
-// 👇 Correct Vite-compatible worker import
 import pdfjsWorker from "pdfjs-dist/build/pdf.worker.mjs?url";
 
 pdfjsLib.GlobalWorkerOptions.workerSrc = pdfjsWorker;
@@ -9,15 +7,12 @@ pdfjsLib.GlobalWorkerOptions.workerSrc = pdfjsWorker;
 export default function PdfUpload({ theme, onAnalyze }) {
 	const [loading, setLoading] = useState(false);
 	const [textExtracted, setTextExtracted] = useState("");
-	const [pdfFile, setPdfFile] = useState(null);
 
 	const handleFileChange = async (e) => {
 		const file = e.target.files[0];
 		if (!file) return;
 
-		setPdfFile(file);
 		setLoading(true);
-
 		try {
 			const text = await extractTextFromPDF(file);
 			setTextExtracted(text);
@@ -69,26 +64,43 @@ export default function PdfUpload({ theme, onAnalyze }) {
 				padding: "20px",
 				borderRadius: "12px",
 				textAlign: "center",
+				margin: "20px auto",
+				maxWidth: "500px",
 			}}
 		>
-			<h3>📄 Upload a PDF File</h3>
+			<h3>Upload a PDF File</h3>
+
+			{/* Custom Choose File Button */}
+			<label
+				htmlFor="pdf-upload"
+				style={{
+					display: "inline-block",
+					background: theme.accent,
+					color: "#fff",
+					padding: "10px 16px",
+					borderRadius: "8px",
+					cursor: "pointer",
+					fontWeight: "bold",
+					marginTop: "10px",
+				}}
+			>
+				Choose PDF File
+			</label>
+
 			<input
+				id="pdf-upload"
 				type="file"
 				accept="application/pdf"
 				onChange={handleFileChange}
-				style={{
-					marginTop: "10px",
-					border: `1px solid ${theme.accent}`,
-					padding: "10px",
-					borderRadius: "8px",
-				}}
+				style={{ display: "none" }}
 			/>
+
 			{loading && (
 				<p style={{ color: theme.accent }}>Extracting text...</p>
 			)}
 			{textExtracted && (
 				<p style={{ fontSize: "12px", marginTop: "10px" }}>
-					✅ PDF Text Extracted Successfully!
+					PDF Text Extracted Successfully!
 				</p>
 			)}
 		</div>
