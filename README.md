@@ -1,118 +1,161 @@
-🎥 Social Media Video Analyzer
+## SOCIAL MEDIA VIDEO ANALYZER - PROJECT DOCUMENTATION
 
-AI-powered tool to analyze your text and video content for engagement optimization.
+---
 
+### **1. Project Overview**
 
-(Example screenshot: Video being analyzed and progress bar visible)
+The **Social Media Video Analyzer** is an AI-powered web application designed to help creators and marketers analyze their social media content—both **text and videos**—to improve engagement and content quality. It uses **AssemblyAI** for video transcription and performs linguistic and engagement-based analysis using custom algorithms.
 
-🚀 Overview
+---
 
-The Social Media Video Analyzer helps creators and marketers enhance their content engagement.
-It uses AssemblyAI’s transcription API to extract speech from videos and analyzes the text using NLP-based heuristics to provide smart improvement suggestions.
+### **2. Features**
 
-✨ Features
+* **Text & Video Upload:** Users can upload written posts or video clips for analysis.
+* **AI-Powered Analysis:** Automatically identifies tone, hashtags, mentions, CTAs, and engagement potential.
+* **Video Transcription:** Extracts spoken text from video using AssemblyAI API.
+* **Smart Suggestions:** Provides insights like keyword optimization, question detection, and tone improvements.
+* **Dark/Light Mode:** Seamless toggle between modes for better user experience.
+* **Dynamic Progress Bar:** Displays upload and analysis progress in real-time.
 
-📤 Upload and analyze Text, PDF, or Video content
+---
 
-🧠 AI-powered speech-to-text transcription via AssemblyAI
+### **3. Technology Stack**
 
-🔍 Smart insights including:
+| Layer       | Technology Used             |
+| ----------- | --------------------------- |
+| Frontend    | React + Vite                |
+| Backend API | AssemblyAI (Speech-to-Text) |
+| Styling     | Custom CSS                  |
+| Deployment  | GitHub Pages / Vercel       |
 
-Hashtag & Mention suggestions
+---
 
-Call-to-Action (CTA) detection
+### **4. Setup Instructions**
 
-Question and engagement tone detection
+#### **Step 1: Clone the Repository**
 
-Keyword frequency analysis
-
-Sentiment & readability evaluation
-
-🌙 Dark / Light Mode toggle
-
-📊 Dynamic Progress Bar for upload and transcription status
-
-🧩 Tech Stack
-Layer	Technology
-Frontend	React + Vite
-Backend	AssemblyAI API (for transcription)
-Styling	Custom CSS
-Deployment	GitHub Pages / Vercel
-🛠️ Setup Instructions
-1️⃣ Clone the repository
+```bash
 git clone https://github.com/Harsh100101/social-media-analyzer.git
 cd social-media-analyzer
+```
 
-2️⃣ Install dependencies
+#### **Step 2: Install Dependencies**
+
+```bash
 npm install
+```
 
-3️⃣ Create your .env file
+#### **Step 3: Create Environment File**
 
-⚠️ Do NOT commit this file to GitHub — your .gitignore already prevents it.
+Create a file named `.env` in the root directory and add your API key:
 
-In the project root (/), create a .env file:
-
+```bash
 VITE_ASSEMBLYAI_API_KEY="your_assemblyai_api_key_here"
+```
 
-4️⃣ Run the app
+⚠️ *Note: Do not commit your .env file to GitHub. It’s already ignored by `.gitignore`.*
+
+#### **Step 4: Run the App Locally**
+
+```bash
 npm run dev
+```
 
+Then open [http://localhost:5173](http://localhost:5173) in your browser.
 
-Visit 👉 http://localhost:5173
+---
 
-📸 Screenshots
-Feature	Screenshot
-🏠 Home Page	
+### **5. Screenshots (Sample Views)**
 
-📤 Upload Section	
+#### 🏠 **Home Page**
 
-🎥 Video Upload & Progress	
+Displays the upload options for both text and video.
 
-📊 Analysis Result	
+<img width="1919" height="987" alt="image" src="https://github.com/user-attachments/assets/16d3f391-cb35-44ec-bd5d-7bf835690f5e" />
 
-📷 You can add screenshots in a folder named /screenshots inside your project.
+#### 📤 **Video Upload with Progress Bar**
 
-🌐 Deployment (Optional)
-🚀 Deploy on Vercel
+Visualizes upload and transcription progress in real-time.
 
-Sign in to https://vercel.com
+<img width="1024" height="498" alt="image" src="https://github.com/user-attachments/assets/e4bd5919-7c9b-4cdc-9301-4a0eab0e28c2" />
 
-Import your GitHub repo
+#### 📊 **Analysis Results Section**
 
-Add your .env key in Vercel’s Environment Variables section
+Shows extracted text and engagement improvement suggestions.
 
-Click Deploy
+<img width="1058" height="960" alt="image" src="https://github.com/user-attachments/assets/09e70039-06ab-4c6d-9e2a-bcd1cc3b0797" />
 
-🌍 Deploy on GitHub Pages
+#### 🌙 **Dark Mode Example**
 
-Install plugin
+Demonstrates UI adaptability for dark/light modes.
 
-npm install gh-pages --save-dev
+<img width="1910" height="987" alt="image" src="https://github.com/user-attachments/assets/38a3ee29-c32f-4e65-834c-9d56f7462430" />
 
+---
 
-Add this to your package.json:
+### **6. Deployment Instructions**
 
-"homepage": "https://Harsh100101.github.io/social-media-analyzer",
-"scripts": {
-  "predeploy": "npm run build",
-  "deploy": "gh-pages -d dist"
-}
+#### 🚀 **Deploy on GitHub Pages**
 
+1. Install the GitHub Pages dependency:
 
-Deploy:
+   ```bash
+   npm install gh-pages --save-dev
+   ```
+2. Add this to your `package.json`:
 
-npm run deploy
+   ```json
+   "homepage": "https://Harsh100101.github.io/social-media-analyzer",
+   "scripts": {
+     "predeploy": "npm run build",
+     "deploy": "gh-pages -d dist"
+   }
+   ```
+3. Deploy using:
 
-🔒 Security Notes
+   ```bash
+   npm run deploy
+   ```
 
-Your .env file should never be pushed to GitHub.
+#### 🌐 **Deploy on Vercel**
 
-The API key is stored only in your local environment or deployment platform.
+1. Go to [https://vercel.com](https://vercel.com)
+2. Import your GitHub repository.
+3. Add your **VITE_ASSEMBLYAI_API_KEY** in *Environment Variables*.
+4. Click **Deploy**.
 
-Ensure CORS and API key permissions are correctly configured in your AssemblyAI dashboard.
+---
 
-🧑‍💻 Author
+### **7. Security Notes**
 
-Harsh
-Frontend Developer & AI Enthusiast
-GitHub Profile →
+* Never commit `.env` or API keys publicly.
+* Ensure the key is used only on the client-side securely.
+* Validate video uploads for size before sending to AssemblyAI.
+
+---
+
+### **8. Author Information**
+
+**Developer:** Harsh
+**Role:** Full Stack Developer & AI Enthusiast
+**GitHub:** [https://github.com/Harsh100101](https://github.com/Harsh100101)
+
+---
+
+### **9. Future Enhancements**
+
+* Add multilingual transcription support.
+* Include advanced NLP-based engagement scoring.
+* Integrate with YouTube or Instagram APIs for auto-import.
+
+---
+
+### **10. References**
+
+* [AssemblyAI API Documentation](https://www.assemblyai.com/docs/)
+* [React Official Docs](https://react.dev/)
+* [Vite Documentation](https://vitejs.dev/)
+
+---
+
+📘 *End of Document*
