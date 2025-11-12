@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Header from "./components/Header";
 import UploadCard from "./components/UploadCard";
+import PdfUpload from "./components/PdfUpload";
 import VideoUpload from "./components/VideoUpload";
 import Loader from "./components/Loader";
 import ResultPanel from "./components/ResultPanel";
@@ -160,6 +161,34 @@ export default function App() {
 			setLoading(false);
 		}, 1000);
 	};
+	async function extractTextFromPDF(file) {
+		const reader = new FileReader();
+
+		return new Promise((resolve, reject) => {
+			reader.onload = async () => {
+				try {
+					const typedArray = new Uint8Array(reader.result);
+					const pdf = await pdfjsLib.getDocument({ data: typedArray })
+						.promise;
+					let fullText = "";
+
+					for (let i = 1; i <= pdf.numPages; i++) {
+						const page = await pdf.getPage(i);
+						const textContent = await page.getTextContent();
+						const text = textContent.items
+							.map((item) => item.str)
+							.join(" ");
+						fullText += text + "\n";
+					}
+
+					resolve(fullText);
+				} catch (err) {
+					reject(err);
+				}
+			};
+			reader.readAsArrayBuffer(file);
+		});
+	}
 
 	// ---------------- VIDEO ANALYZER ----------------
 	async function analyzeVideo(videoFile) {
@@ -264,6 +293,7 @@ export default function App() {
 					loading={loading}
 				/>
 				<VideoUpload theme={current} onAnalyze={analyzeVideo} />
+				<PdfUpload theme={current} onAnalyze={analyzeText} />
 
 				{/* ✅ Show progress bar during upload/transcription */}
 				{progress > 0 && progress < 100 && (
